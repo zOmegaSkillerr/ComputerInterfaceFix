@@ -262,22 +262,8 @@ namespace ComputerInterface
 
         public async Task CreateMonitors(bool includeKeys = true)
         {
-            // https://github.com/legoandmars/Utilla/blob/457bc612eda8e63b989dcdb219e04e8e7f06393a/Utilla/GamemodeManager.cs#L54
-            ZoneManagement zoneManager = FindObjectOfType<ZoneManagement>();
 
-            // https://github.com/legoandmars/Utilla/blob/457bc612eda8e63b989dcdb219e04e8e7f06393a/Utilla/GamemodeManager.cs#L56
-            ZoneData FindZoneData(GTZone zone)
-                => (ZoneData)AccessTools.Method(typeof(ZoneManagement), "GetZoneData").Invoke(zoneManager, new object[] { zone });
-
-            Transform[] physicalComputers =
-            {
-                FindZoneData(GTZone.forest).rootGameObjects[1].transform.Find("TreeRoomInteractables/UI/-- PhysicalComputer UI --"),
-                FindZoneData(GTZone.mountain).rootGameObjects[0].transform.Find("Geometry/goodigloo/PhysicalComputer (2)"),
-                FindZoneData(GTZone.skyJungle).rootGameObjects[0].transform.Find("UI/-- Clouds PhysicalComputer UI --"),
-                FindZoneData(GTZone.basement).rootGameObjects[0].transform.Find("DungeonRoomAnchor/BasementComputer/PhysicalComputer (2)"),
-                FindZoneData(GTZone.beach).rootGameObjects[0].transform.Find("BeachComputer/PhysicalComputer (2)")
-            };
-
+           GameObject[] physicalComputers = { GameObject.Find("UI/-- PhysicalComputer UI --"), GameObject.Find("goodigloo/PhysicalComputer (2)"), GameObject.Find("skyjungle/UI/-- Clouds PhysicalComputer UI --/"), GameObject.Find("BasementComputer/PhysicalComputer (2)"), GameObject.Find("BeachComputer/PhysicalComputer (2)") };
             for (int i = 0; i < physicalComputers.Length; i++)
             {
                 if (includeKeys)
@@ -290,7 +276,7 @@ namespace ComputerInterface
                 // Then load the computer screens
                 try
                 {
-                    CustomScreenInfo screenInfo = await CreateMonitor(physicalComputers[i].gameObject, (MonitorLocation)i);
+                    CustomScreenInfo screenInfo = await CreateMonitor(physicalComputers[i], (MonitorLocation)i);
                     screenInfo.Color = _config.ScreenBackgroundColor.Value;
                     screenInfo.Background = _config.BackgroundTexture;
                     if (_customScreenDict.TryGetValue((MonitorLocation)i, out var _tempMonitor))

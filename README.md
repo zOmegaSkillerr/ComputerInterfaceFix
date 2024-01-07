@@ -21,10 +21,8 @@ You can find all of us on the [Gorilla Tag Modding Group Discord](http://discord
 - [For Developers](#for-developers)
 - [Disclaimers](#disclaimers)
 
-## Install
+## Tutorial
 
-The recommended way to install Computer Interface is through [MonkeModManager](https://github.com/DeadlyKitten/MonkeModManager/releases/latest). Simply select Computer Interface from the menu, and hit "Install/Update".
-This will ensure you have all the necessary dependencies set up.
 
 ## CommandLine
 

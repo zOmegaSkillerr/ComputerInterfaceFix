@@ -21,9 +21,6 @@ You can find all of us on the [Gorilla Tag Modding Group Discord](http://discord
 - [For Developers](#for-developers)
 - [Disclaimers](#disclaimers)
 
-## Tutorial
-
-
 ## CommandLine
 
 Computer Interface ships with a CLI that enables you to execute routines & change settings.
